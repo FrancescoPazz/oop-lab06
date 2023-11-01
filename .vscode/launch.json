@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TestSocialNetworkUser",
+            "request": "launch",
+            "mainClass": "it.unibo.collections.social.TestSocialNetworkUser"
+        },
+        {
+            "type": "java",
+            "name": "UseArithmeticService",
+            "request": "launch",
+            "mainClass": "it.unibo.exceptions.UseArithmeticService"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "TestPerformance",
+            "request": "launch",
+            "mainClass": "it.unibo.collections.TestPerformance",
+            "projectName": "62-use-lists-and-maps"
+        },
+        {
+            "type": "java",
+            "name": "UseListsAndMaps",
+            "request": "launch",
+            "mainClass": "it.unibo.collections.UseListsAndMaps",
+            "projectName": "62-use-lists-and-maps"
+        }
+    ]
+}
