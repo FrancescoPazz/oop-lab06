@@ -1,5 +1,7 @@
 package it.unibo.generics.graph.impl;
 
+import java.util.Collections;
+import java.util.Queue;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
@@ -48,19 +50,40 @@ public class GraphImpl<N> implements Graph<N> {
         return this.edges.get(node);
     }
 
-    public List<N> getPath(N source, N target){
-        List<N> path = new LinkedList<>();
-        boolean OK = true;
-        if( this.edges.get(source).contains(target) ){
-            for (N n : this.edges.get(source)) {
-                if (OK){
-                    path.add(n);
-                    OK = false;
+    public List<N> getPath(N source, N target){  
+        if (!nodes.contains(source) || !nodes.contains(target)) {
+            return null; 
+        }
+
+        Queue<N> queue = new LinkedList<>();
+        Map<N, N> parentMap = new HashMap<>(); 
+
+        queue.add(source);
+        parentMap.put(source, null); 
+
+        while (!queue.isEmpty()) {
+            N current = queue.poll();
+
+            if (current.equals(target)) {
+                List<N> path = new ArrayList<>();
+                N node = target;
+                while (node != null) {
+                    path.add(node);
+                    node = parentMap.get(node);
+                }
+                Collections.reverse(path);
+                return path;
+            }
+
+            for (N neighbor : edges.get(current)) {
+                if (!parentMap.containsKey(neighbor)) {
+                    queue.add(neighbor);
+                    parentMap.put(neighbor, current);
                 }
             }
-            return path;
         }
-        return null;
+
+        return null; 
     }
 
 }
